@@ -1,0 +1,6 @@
+﻿Build started...
+1>------ Build started: Project: Game, Configuration: Debug x64 ------
+1>Main.cpp
+1>C:\Users\ccolby\source\repos\GAT150\Game\Main.cpp(8): error C4716: 'Main': must return a value
+1>Done building project "Game.vcxproj" -- FAILED.
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
