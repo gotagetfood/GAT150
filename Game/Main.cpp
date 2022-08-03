@@ -4,6 +4,8 @@
 using namespace std;
 
 int main() {
+
+
 	towr::InitializeMemory();
 	towr::SetFilePath("../Assets");
 

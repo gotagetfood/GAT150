@@ -1,5 +1,6 @@
 #include "Texture.h" 
 #include "Renderer.h" 
+#include "Core/Logger.h"
 #include <SDL.h> 
 #include <SDL_image.h> 
 
@@ -15,9 +16,20 @@ namespace towr
     {
         // load surface 
         SDL_Surface* surface = IMG_Load(filename.c_str()); 
+        if (surface == nullptr) {
+            LOG(SDL_GetError());
+            return false;
+            //g_logger.Log("error loading %s", filename.c_str());
+        }
 
         // create texture
         m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
+        if (m_texture == nullptr) {
+            LOG(SDL_GetError()); 
+            SDL_FreeSurface(surface);
+            return false;
+            //g_logger.Log("error loading %s", filename.c_str());
+        }
         SDL_FreeSurface(surface);
 
         return true;
@@ -26,7 +38,7 @@ namespace towr
     towr::Vector2 Texture::GetSize() const
     {
         SDL_Point point;
-        SDL_QueryTexture(m_texture, nullptr, nullptr,&point.x, &point.y);
+        SDL_QueryTexture(m_texture, nullptr, nullptr, &point.x, &point.y);
 
         return Vector2(point.x,point.y);  
     }
