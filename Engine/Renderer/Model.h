@@ -13,7 +13,7 @@ namespace towr {
 
 		Model(const std::string filename);
 		
-		void Draw(Renderer& renderer,const Vector2 position, float angle, float scale = 1);
+		void Draw(Renderer& renderer,const Vector2 position, float angle, const Vector2& scale = Vector2(1,1));
 		//renerer + transform
 
 		void Load(const std::string& filename);

@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdint>
-
+#include <iostream>
+#include <string>
 
 namespace towr {
 
@@ -9,6 +10,13 @@ namespace towr {
 
 	struct Color {
 		uint8_t r, g, b, a;
+
+		static const Color white;
+		static const Color black;
+		static const Color red;
+		static const Color green;
+		static const Color blue;
+
 
 		friend std::istream& operator>> (std::istream& stream, Color& color) {
 			std::string line;

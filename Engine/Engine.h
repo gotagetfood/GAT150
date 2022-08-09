@@ -6,12 +6,16 @@
 #include "Math/MathUtils.h"
 #include "Math/Random.h"
 
+#include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
 
 #include "FrameWork/Scene.h"
 #include "FrameWork/Game.h"
 
-#include "Input/InputSystem.h"
+#include "Components/PlayerComponent.h"
+#include "Components/SpriteComponent.h"
+#include "Components/AudioComponent.h"
+#include "Components/PhysicsComponent.h"
 
 #include "Renderer/Renderer.h"
 #include "Renderer/Model.h"	

@@ -5,7 +5,8 @@ namespace towr {
 	struct Transform {
 		Vector2 position;
 		float rotation;
-		float scale;
+		Vector2 scale{1, 1};
+
 
 	};
 }

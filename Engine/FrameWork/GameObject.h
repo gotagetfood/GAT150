@@ -5,7 +5,7 @@ namespace towr {
 	class GameObject {
 	public:
 		GameObject() = default;
-		GameObject(const Transform& transform) : m_transform{ transform } {}
+		
 
 		virtual void Update() = 0;
 

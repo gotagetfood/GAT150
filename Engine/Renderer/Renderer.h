@@ -7,6 +7,9 @@ struct SDL_Renderer;
 struct SDL_Window;
 
 namespace towr {
+
+	struct Transform;
+
 	class Renderer {
 	public:
 		Renderer() = default;
@@ -28,7 +31,8 @@ namespace towr {
 		int GetWidth() { return m_width; }
 		int GetHeight() { return m_height; }
 
-		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0);
+		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0, const Vector2& scale = Vector2(1, 1), const Vector2& registration = Vector2(0.5f, 0.5f));
+		void Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration = Vector2(0.5f, 0.5f));
 
 		friend class Texture;
 		friend class Text;

@@ -27,6 +27,9 @@
     <Filter Include="Source Code\Audio">
       <UniqueIdentifier>{78782efd-8531-4c44-92d9-2ce84ec7c5c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Components">
+      <UniqueIdentifier>{99ece44e-ee3a-4653-8679-cb8d00440f6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -73,6 +76,24 @@
     </ClCompile>
     <ClCompile Include="Core\Logger.cpp">
       <Filter>Source Code\core</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector2.cpp">
+      <Filter>Source Code\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Color.cpp">
+      <Filter>Source Code\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\PlayerComponent.cpp">
+      <Filter>Source Code\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\SpriteComponent.cpp">
+      <Filter>Source Code\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\AudioComponent.cpp">
+      <Filter>Source Code\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\PhysicsComponent.cpp">
+      <Filter>Source Code\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +159,27 @@
     </ClInclude>
     <ClInclude Include="Core\Logger.h">
       <Filter>Source Code\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component.h">
+      <Filter>Source Code\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\PlayerComponent.h">
+      <Filter>Source Code\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\RenderComponent.h">
+      <Filter>Source Code\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SpriteComponent.h">
+      <Filter>Source Code\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\AudioComponent.h">
+      <Filter>Source Code\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\PhysicsComponent.h">
+      <Filter>Source Code\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix2x2.h">
+      <Filter>Source Code\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

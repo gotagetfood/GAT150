@@ -9,7 +9,7 @@ namespace towr {
 		m_radius = CaluclateRadius();
 	}
 
-	void Model::Draw(Renderer& renderer, const Vector2 position, float angle, float scale){
+	void Model::Draw(Renderer& renderer, const Vector2 position, float angle, const Vector2& scale){
 		/*towr::Color color;
 		color.r = towr::random(256);
 		color.g = towr::random(256);
