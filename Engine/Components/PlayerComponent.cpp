@@ -7,7 +7,6 @@ void towr::PlayerComponent::Update(){
 	float thrust = 0;
 	if (towr::g_inputSystem.GetKeyState(towr::key_up) == InputSystem::KeyState::Held) {
 		thrust = 1000;
-		std::cout << "down" << std::endl;
 	}
 
 	//move

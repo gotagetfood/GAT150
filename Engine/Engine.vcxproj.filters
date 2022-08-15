@@ -30,6 +30,9 @@
     <Filter Include="Source Code\Components">
       <UniqueIdentifier>{99ece44e-ee3a-4653-8679-cb8d00440f6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Resource">
+      <UniqueIdentifier>{a9e95937-fe94-42f4-b293-0722e5403729}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -94,6 +97,21 @@
     </ClCompile>
     <ClCompile Include="Components\PhysicsComponent.cpp">
       <Filter>Source Code\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Matrix2x2.cpp">
+      <Filter>Source Code\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector3.cpp">
+      <Filter>Source Code\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Matrix3x3.cpp">
+      <Filter>Source Code\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ModelComponent.cpp">
+      <Filter>Source Code\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\ResourceManager.cpp">
+      <Filter>Source Code\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +198,24 @@
     </ClInclude>
     <ClInclude Include="Math\Matrix2x2.h">
       <Filter>Source Code\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector3.h">
+      <Filter>Source Code\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix3x3.h">
+      <Filter>Source Code\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\ModelComponent.h">
+      <Filter>Source Code\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ModelComponent.h">
+      <Filter>Source Code\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\ResourceManager.h">
+      <Filter>Source Code\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Resource.h">
+      <Filter>Source Code\Resource</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

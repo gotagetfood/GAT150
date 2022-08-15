@@ -1,4 +1,5 @@
 #include "File.h"
+#include "logger.h"
 #include <filesystem>
 #include <fstream>
 
@@ -24,7 +25,10 @@ namespace towr {
 	}
 	bool ReadFile(const std::string& pathname, std::string& buffer)
 	{
-		if (!FileExists(pathname)) return false;
+		if (!FileExists(pathname)) { 
+			LOG("Error could not read file %s", pathname.c_str());
+			return false; 
+		}
 		//get file size and set buffer size
 		size_t size;
 		GetFileSize(pathname, size);

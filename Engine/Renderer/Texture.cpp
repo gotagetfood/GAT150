@@ -1,6 +1,7 @@
 #include "Texture.h" 
 #include "Renderer.h" 
 #include "Core/Logger.h"
+#include "Engine.h"
 #include <SDL.h> 
 #include <SDL_image.h> 
 
@@ -10,6 +11,14 @@ namespace towr
     {
         // !! if texture not null SDL_DestroyTexture 
         if (m_texture != nullptr) SDL_DestroyTexture(m_texture);
+    }
+
+    bool Texture::Create(const std::string& filename, void* data)
+    {
+        //check data is not null
+
+        Renderer* renderer = static_cast<Renderer*>(data);
+        return Create(*renderer, filename);
     }
 
     bool Texture::Create(Renderer& renderer, const std::string& filename)

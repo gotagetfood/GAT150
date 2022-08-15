@@ -6,4 +6,5 @@ namespace towr {
 	Time g_time;
 	Scene g_scene;
 	AudioSystem g_audioSystem;
+	ResourceManager g_resources;
 }

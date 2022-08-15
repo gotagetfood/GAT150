@@ -14,6 +14,6 @@ namespace towr {
 		Vector2 m_velocity;
 		Vector2 m_asseleration;
 
-		float m_damping =0.99;
+		float m_damping = 0.99f;
 	};
 }

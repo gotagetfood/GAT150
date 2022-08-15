@@ -8,6 +8,7 @@
 
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
+#include "Resource/ResourceManager.h"
 
 #include "FrameWork/Scene.h"
 #include "FrameWork/Game.h"
@@ -16,11 +17,13 @@
 #include "Components/SpriteComponent.h"
 #include "Components/AudioComponent.h"
 #include "Components/PhysicsComponent.h"
+#include "Components/ModelComponent.h"
 
 #include "Renderer/Renderer.h"
 #include "Renderer/Model.h"	
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
+#include "Renderer/Model.h"
 
 #include <memory>
 #include <iostream>
@@ -34,4 +37,5 @@ namespace towr {
 	extern Time g_time;
 	extern Scene g_scene;
 	extern AudioSystem g_audioSystem;
+	extern ResourceManager g_resources;
 }
