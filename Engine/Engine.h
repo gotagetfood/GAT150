@@ -12,6 +12,8 @@
 
 #include "FrameWork/Scene.h"
 #include "FrameWork/Game.h"
+#include "FrameWork/Factory.h"
+#include "FrameWork/Singleton.h"
 
 #include "Components/PlayerComponent.h"
 #include "Components/SpriteComponent.h"
@@ -38,4 +40,10 @@ namespace towr {
 	extern Scene g_scene;
 	extern AudioSystem g_audioSystem;
 	extern ResourceManager g_resources;
+
+	class Engine : public Singleton<Engine> {
+	public:
+		void Register();
+
+	};
 }

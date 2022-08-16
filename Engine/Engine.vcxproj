@@ -197,9 +197,11 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Framework\Actor.h" />
     <ClInclude Include="Framework\Component.h" />
+    <ClInclude Include="Framework\Factory.h" />
     <ClInclude Include="Framework\Game.h" />
     <ClInclude Include="FrameWork\GameObject.h" />
     <ClInclude Include="Framework\Scene.h" />
+    <ClInclude Include="Framework\Singleton.h" />
     <ClInclude Include="Input\InputSystem.h" />
     <ClInclude Include="Math\Color.h" />
     <ClInclude Include="Math\MathUtils.h" />
@@ -217,6 +219,9 @@
     <ClInclude Include="Renderer\Texture.h" />
     <ClInclude Include="Resource\Resource.h" />
     <ClInclude Include="Resource\ResourceManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Build\Assets\level.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -217,5 +217,16 @@
     <ClInclude Include="Resource\Resource.h">
       <Filter>Source Code\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Singleton.h">
+      <Filter>Source Code\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Factory.h">
+      <Filter>Source Code\Framework</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Build\Assets\level.txt">
+      <Filter>Resources</Filter>
+    </Text>
   </ItemGroup>
 </Project>

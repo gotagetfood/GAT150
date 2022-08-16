@@ -12,18 +12,18 @@ namespace towr{
 	class Renderer;
 
 class Texture : public Resource{
-public:
-	Texture() = default;
-	~Texture();
+	public:
+		Texture() = default;
+		~Texture();
 
-	bool Create(const std::string& filename, void* data = nullptr) override;
-	bool Create(Renderer& renderer, const std::string& filename);
+		bool Create(std::string filename, ...) override;
+		bool Create(Renderer& renderer, const std::string& filename);
 
-	Vector2 GetSize() const;
+		Vector2 GetSize() const;
 
-	friend class Renderer;
+		friend class Renderer;
 
-private:
-	SDL_Texture* m_texture = nullptr;
-};
+	private:
+		SDL_Texture* m_texture = nullptr;
+	};
 }

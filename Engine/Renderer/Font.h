@@ -15,8 +15,9 @@ namespace towr
 		Font(const std::string& filename, int fontSize);
 		~Font();
 
-		bool Create(const std::string& filename, void* data = nullptr) override;
-		void Load(const std::string& filename, int fontSize);
+		//bool Create(const std::string& filename, void* data = nullptr) override;
+		bool Create(std::string filename, ...) override;
+		bool Load(const std::string& filename, int fontSize);
 
 		_TTF_Font* m_ttfFont = nullptr;
 	protected:

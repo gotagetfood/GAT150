@@ -12,12 +12,13 @@ namespace towr {
 		m_radius = CaluclateRadius();
 	}
 
-	bool Model::Create(const std::string& filename,void* data){
-		if (!Load(filename)){
-			LOG("Error could not find model %s", filename.c_str());
-			return false;
-		}
-		return true;
+	bool Model::Create(std::string filename, ...)
+	{
+		if (!Load(filename)) {
+				LOG("Error could not find model %s", filename.c_str());
+				return false;
+			}
+			return true;
 	}
 
 	void Model::Draw(Renderer& renderer, const Vector2 position, float angle, const Vector2& scale){

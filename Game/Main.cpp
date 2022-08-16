@@ -3,7 +3,10 @@
 
 using namespace std;
 
+
+
 int main() {
+	
 
 
 	towr::InitializeMemory();
@@ -11,11 +14,12 @@ int main() {
 
 	//create systems
 	towr::g_renderer.Initialize();
-	//audio
 	towr::g_audioSystem.Initialize();
-	//input System
 	towr::g_inputSystem.Initialize();
 	towr::g_resources.Initialize();
+
+	towr::Engine::Instance().Register();
+
 	
 	//Create Window
 	towr::g_renderer.CreateWindow("Neumont", 800, 600);
@@ -32,9 +36,11 @@ int main() {
 			//create actors
 			towr::Transform transform{ {100,100},90,{3,3} };
 
-			std::unique_ptr<towr::Actor> actor = std::make_unique<towr::Actor>(transform);
+			//std::unique_ptr<towr::Actor> actor = std::make_unique<towr::Actor>(transform);
+			std::unique_ptr<towr::Actor> actor = towr::Factory::Instance().Create<towr::Actor>("Actor");
+			actor->m_transform = transform;
 
-			std::unique_ptr<towr::PlayerComponent> Pcomponent = std::make_unique<towr::PlayerComponent>();
+			std::unique_ptr<towr::Component> Pcomponent = towr::Factory::Instance().Create<towr::Component>("PlayerComponent");
 			actor->AddComponent(std::move(Pcomponent));
 
 			//std::unique_ptr<towr::SpriteComponent> Scomponent = std::make_unique<towr::SpriteComponent>();
@@ -48,7 +54,7 @@ int main() {
 			Acomponent->m_soundname = "sound";
 			actor->AddComponent(std::move(Acomponent));
 
-			std::unique_ptr<towr::PhysicsComponent> PHcomponent = std::make_unique<towr::PhysicsComponent>();
+			std::unique_ptr<towr::Component> PHcomponent = towr::Factory::Instance().Create<towr::Component>("PhysicsComponent");
 			actor->AddComponent(std::move(PHcomponent));
 
 			//child actor

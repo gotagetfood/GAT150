@@ -5,7 +5,7 @@
 namespace towr {
 	void Actor::Update(){
 		if (m_parent) m_transform.Update(m_parent->m_transform.matrix);
-		m_transform.Update();
+		else m_transform.Update();
 
 		for (auto& component : m_components) {
 			component->Update();
