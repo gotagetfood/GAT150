@@ -66,6 +66,7 @@ namespace towr {
 		static Vector2 Rotate(const Vector2& v,float angle);
 
 		friend std::istream& operator >> (std::istream&, Vector2& v);
+		friend std::ostream& operator << (std::ostream& stream, const Vector2& v);
 
 		static const Vector2 one;
 		static const Vector2 zero;

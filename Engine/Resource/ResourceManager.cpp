@@ -6,6 +6,6 @@ namespace towr {
 	}
 
 	void towr::ResourceManager::Shutdown() {
-
+		m_resources.clear();
 	}
 }
