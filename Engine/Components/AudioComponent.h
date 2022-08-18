@@ -8,6 +8,10 @@ namespace towr {
 
 		void Update() override;
 
+		// Inherited via Component
+		virtual bool Write(const rapidjson::Value& value) const override;
+		virtual bool Read(const rapidjson::Value& value) override;
+
 		void Play();
 		void Stop();
 
@@ -17,5 +21,6 @@ namespace towr {
 		float m_pitch = 1;
 		bool m_playOnAwake = false;
 		bool m_loop = false;
+
 	};
 }

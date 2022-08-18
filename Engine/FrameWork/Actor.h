@@ -7,7 +7,7 @@ namespace towr {
 	class Scene;
 	class Renderer;
 
-	class Actor : public GameObject {
+	class Actor : public GameObject, public ISerializable {
 	public:
 		Actor() = default;
 		Actor(const Transform& transform) : m_transform{ transform } {}
@@ -18,11 +18,19 @@ namespace towr {
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer);
 
+		// Inherited via ISerializable
+		virtual bool Write(const rapidjson::Value& value) const override;
+		virtual bool Read(const rapidjson::Value& value) override;
+
 		void AddChild(std::unique_ptr<Actor> child);
 
 		virtual void OnCollision(Actor* other) {}
 		float GetRadius() { return 0; }//{ return m_model.GetRadius() * std::max(m_transform.scale.x, m_transform.scale.y); }
-		std::string& GetTag() { return m_tag; }
+
+		const std::string& GetTag() { return tag; }
+		void SetTag(const std::string& tag) { this->tag = tag; }
+		const std::string& GetName() { return name; }
+		void SetName(const std::string& name) { this->name = name; }
 
 		void AddComponent(std::unique_ptr<Component> component);
 		template<typename T>
@@ -33,7 +41,9 @@ namespace towr {
 
 		Transform m_transform;
 	protected:
-		std::string m_tag;
+		std::string name;
+		std::string tag;
+
 		bool m_destory = false;
 		//physics
 		Vector2 m_velocity;
@@ -42,6 +52,7 @@ namespace towr {
 		Actor* m_parent = nullptr;
 		std::vector<std::unique_ptr<Component>> m_components;
 		std::vector<std::unique_ptr<Actor>> m_children;
+
 
 	};
 

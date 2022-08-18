@@ -12,3 +12,13 @@ void towr::AudioComponent::Play(){
 void towr::AudioComponent::Stop(){
 
 }
+
+bool towr::AudioComponent::Write(const rapidjson::Value& value) const
+{
+	return false;
+}
+
+bool towr::AudioComponent::Read(const rapidjson::Value& value)
+{
+	return false;
+}

@@ -12,40 +12,6 @@ int main() {
 	towr::InitializeMemory();
 	towr::SetFilePath("../Assets");
 
-	rapidjson::Document document;
-	bool success = towr::json::Load("json.txt", document);
-	assert(success);
-
-
-	string s1;
-	towr::json::Get(document, "string", s1);
-	std::cout << s1 << std::endl;
-
-	bool b1;
-	towr::json::Get(document, "boolean", b1);
-	std::cout << b1 << std::endl;
-
-	int i1;
-	towr::json::Get(document, "integer1", i1);
-	std::cout << i1 << std::endl;
-
-	int i2;
-	towr::json::Get(document, "integer2", i2);
-	std::cout << i2 << std::endl;
-
-	float f1;
-	towr::json::Get(document, "float", f1);
-	std::cout << f1 << std::endl;
-
-	towr::Vector2 v1;
-	towr::json::Get(document, "vector2", v1);
-	std::cout << v1 << std::endl;
-
-	towr::Color c1;
-	towr::json::Get(document, "color", c1);
-	std::cout << c1 << std::endl;
-
-
 	//create systems
 	towr::g_renderer.Initialize();
 	towr::g_audioSystem.Initialize();
@@ -58,6 +24,13 @@ int main() {
 	//Create Window
 	towr::g_renderer.CreateWindow("Neumont", 800, 600);
 	towr::g_renderer.SetClearColor(towr::Color{ 30, 30, 30, 255 });
+
+	//create scene / actors
+
+	rapidjson::Document document;
+	bool success = towr::json::Load("level.txt", document);
+
+	towr::g_scene.Read(document);
 
 	{
 

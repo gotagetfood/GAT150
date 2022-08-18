@@ -3,14 +3,26 @@
 #include "Matrix2x2.h"
 #include "Matrix3x3.h"
 #include "MathUtils.h"
+#include "Serialization/ISerializable.h"
 
 namespace towr {
-	struct Transform {
+	struct Transform : public ISerializable{
 		Vector2 position;
 		float rotation{ 0 };
 		Vector2 scale{1, 1};
 
 		Matrix3x3 matrix;
+
+		Transform() = default;
+		Transform(const Vector2& position, float rotation, const Vector2& scale) :
+			position{ position },
+			rotation{ rotation },
+			scale{ scale }
+		{}
+
+		// Inherited via ISerializable
+		virtual bool Write(const rapidjson::Value& value) const override;
+		virtual bool Read(const rapidjson::Value& value) override;
 
 		void Update() {
 			Matrix3x3 mxScale = Matrix3x3::CreateScale(scale);

@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "Factory.h"
 #include <algorithm>
 #include <iostream>
 
@@ -42,6 +43,26 @@ namespace towr {
 	}
 	bool Scene::Read(const rapidjson::Value& value)
 	{
+		if (!value.HasMember("actors") || !value["actors"].IsArray()) {
+			
+			return false;
+		}
+
+		//read actors
+		for (auto& actorValue : value["actors"].GetArray()) {
+			std::string type;
+			READ_DATA(actorValue, type);
+
+			towr::json::Get(value, "type", type);
+
+			auto actor = Factory::Instance().Create<Actor>(type);
+			if (actor) {
+				//read actor
+				actor->Read(actorValue);
+				Add(std::move(actor));
+			}
+		}
+
 		return true;
 	}
 }

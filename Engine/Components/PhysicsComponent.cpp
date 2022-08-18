@@ -9,3 +9,13 @@ void towr::PhysicsComponent::Update()
 
 	m_asseleration = Vector2::zero;
 }
+
+bool towr::PhysicsComponent::Write(const rapidjson::Value& value) const{
+	return true;
+}
+
+bool towr::PhysicsComponent::Read(const rapidjson::Value& value){
+	READ_DATA(value, m_damping);
+
+	return true;
+}

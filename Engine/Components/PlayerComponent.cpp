@@ -6,7 +6,7 @@ void towr::PlayerComponent::Update(){
 	
 	float thrust = 0;
 	if (towr::g_inputSystem.GetKeyState(towr::key_up) == InputSystem::KeyState::Held) {
-		thrust = 1000;
+		thrust = speed;
 	}
 
 	//move
@@ -45,4 +45,13 @@ void towr::PlayerComponent::Update(){
 		}
 	}
 	
+}
+
+bool towr::PlayerComponent::Write(const rapidjson::Value& value) const{
+	return true;
+}
+
+bool towr::PlayerComponent::Read(const rapidjson::Value& value){
+	READ_DATA(value, speed);
+	return true;
 }
