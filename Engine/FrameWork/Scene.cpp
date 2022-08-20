@@ -53,7 +53,7 @@ namespace towr {
 			std::string type;
 			READ_DATA(actorValue, type);
 
-			towr::json::Get(value, "type", type);
+			//towr::json::Get(value, "type", type);
 
 			auto actor = Factory::Instance().Create<Actor>(type);
 			if (actor) {

@@ -17,14 +17,12 @@ void towr::PlayerComponent::Update(){
 	}
 	if (towr::g_inputSystem.GetKeyState(towr::key_right) == InputSystem::KeyState::Held) {
 		m_owner->m_transform.rotation += 180 * g_time.deltaTime;
-		direction = Vector2::right;
+		//direction = Vector2::right;
 	}
-	/*if (towr::g_inputSystem.GetKeyDown(towr::key_up) == InputSystem::KeyState::Held) {
-		direction = Vector2::up;
-	}*/
 	if (towr::g_inputSystem.GetKeyState(towr::key_down) == InputSystem::KeyState::Held) {
-		direction = Vector2::down;
+		//direction = Vector2::down;
 	}
+
 	auto component = m_owner->GetComponent<PhysicsComponent>();
 	if (component) {
 		//thrust force

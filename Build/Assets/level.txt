@@ -2,7 +2,7 @@
    "actors":[
       {
          "type":"Actor",
-         "name":"Player",
+         "name":"player",
          "tag":"Player",
          "transform":{
             "position":[
@@ -18,15 +18,24 @@
          "components":[
             {
                "type":"PlayerComponent",
-               "speed":1000
+               "speed":200
             },
             {
                "type":"ModelComponent",
                "model_name":"mod/space ship.txt"
             },
             {
-                "type":"physicsComponent",
+                "type":"PhysicsComponent",
                 "m_damping":0.98
+            },
+            {
+                "type":"SpriteAnimComponent",
+                "texture_name":"pngs/ghost-idle.png",
+                "fps":12,
+                "num_columns":7,
+                "num_rows":1,
+                "start_frame":1,
+                "end_frame":7
             }
          ]
       }

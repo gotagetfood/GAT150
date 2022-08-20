@@ -9,6 +9,7 @@ struct SDL_Window;
 namespace towr {
 
 	struct Transform;
+	struct Rect;
 
 	class Renderer {
 	public:
@@ -33,6 +34,7 @@ namespace towr {
 
 		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0, const Vector2& scale = Vector2(1, 1), const Vector2& registration = Vector2(0.5f, 0.5f));
 		void Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration = Vector2(0.5f, 0.5f));
+		void Draw(std::shared_ptr<Texture> texture, const Rect& source, const Transform& transform, const Vector2& registration = Vector2(0.5f, 0.5f));
 
 		friend class Texture;
 		friend class Text;

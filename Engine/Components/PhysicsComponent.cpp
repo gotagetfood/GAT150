@@ -16,6 +16,8 @@ bool towr::PhysicsComponent::Write(const rapidjson::Value& value) const{
 
 bool towr::PhysicsComponent::Read(const rapidjson::Value& value){
 	READ_DATA(value, m_damping);
+	READ_DATA(value, m_velocity);
+	READ_DATA(value, m_asseleration);
 
 	return true;
 }

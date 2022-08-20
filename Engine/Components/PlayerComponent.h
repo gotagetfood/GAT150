@@ -13,7 +13,7 @@ namespace towr {
 		void Update() override;
 
 	public:
-		float speed = 0.0f;
+		float speed = 1.0f;
 
 	};
 }

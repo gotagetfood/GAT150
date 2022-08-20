@@ -48,8 +48,8 @@ namespace towr {
 		return true;
 	}
 	bool Actor::Read(const rapidjson::Value& value){
-		READ_DATA(value, tag);
 		READ_DATA(value, name);
+		READ_DATA(value, tag);
 
 		m_transform.Read(value["transform"]);
 

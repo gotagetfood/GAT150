@@ -36,6 +36,9 @@
     <Filter Include="Source Code\Serialization">
       <UniqueIdentifier>{7f05b5f0-fcc0-48b9-9794-85b527a67b2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Physics">
+      <UniqueIdentifier>{5542fefc-7524-477b-8eab-6156448e35d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -121,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="Math\Transform.cpp">
       <Filter>Source Code\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\SpriteAnimComponent.cpp">
+      <Filter>Source Code\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -234,6 +240,12 @@
     </ClInclude>
     <ClInclude Include="Serialization\ISerializable.h">
       <Filter>Source Code\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Rect.h">
+      <Filter>Source Code\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SpriteAnimComponent.h">
+      <Filter>Source Code\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
