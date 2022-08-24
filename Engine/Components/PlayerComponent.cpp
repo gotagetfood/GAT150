@@ -12,12 +12,12 @@ void towr::PlayerComponent::Update(){
 	//move
 	Vector2 direction = Vector2::zero;
 	if (towr::g_inputSystem.GetKeyState(towr::key_left) == InputSystem::KeyState::Held) {
-		m_owner->m_transform.rotation += -180 * g_time.deltaTime;
-		//irection = Vector2::left;
+		direction = Vector2::left;
+		//m_owner->m_transform.rotation += -180 * g_time.deltaTime;
 	}
 	if (towr::g_inputSystem.GetKeyState(towr::key_right) == InputSystem::KeyState::Held) {
-		m_owner->m_transform.rotation += 180 * g_time.deltaTime;
-		//direction = Vector2::right;
+		direction = Vector2::right;
+		//m_owner->m_transform.rotation += 180 * g_time.deltaTime;
 	}
 	if (towr::g_inputSystem.GetKeyState(towr::key_down) == InputSystem::KeyState::Held) {
 		//direction = Vector2::down;
@@ -25,21 +25,14 @@ void towr::PlayerComponent::Update(){
 
 	auto component = m_owner->GetComponent<PhysicsComponent>();
 	if (component) {
-		//thrust force
-		Vector2 force = Vector2::Rotate( { 1, 0 },math::DegToRad(m_owner->m_transform.rotation)) * thrust;
-		component->ApplyForce(force);
-
-		// gravitational force
-		force = (Vector2{ 400, 300 } - m_owner->m_transform.position).Noralized() * 100.0f;
-		component->ApplyForce(force);
+		component->ApplyForce(direction * speed);
 	}
-	m_owner->m_transform.position += direction * 30 * g_time.deltaTime;
 
-	//sound thing
+	//jump
 	if (g_inputSystem.GetKeyState(key_space) == InputSystem::KeyState::Pressed) {
-		auto component = m_owner->GetComponent<AudioComponent>();
+		auto component = m_owner->GetComponent<PhysicsComponent>();
 		if (component) {
-			component->Play();
+			component->ApplyForce(Vector2::up * 300);
 		}
 	}
 	

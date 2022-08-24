@@ -17,13 +17,14 @@ int main() {
 	towr::g_audioSystem.Initialize();
 	towr::g_inputSystem.Initialize();
 	towr::g_resources.Initialize();
+	towr::g_physicsSystem.Initialize();
 
 	towr::Engine::Instance().Register();
 
 	
 	//Create Window
 	towr::g_renderer.CreateWindow("Neumont", 800, 600);
-	towr::g_renderer.SetClearColor(towr::Color{ 30, 30, 30, 255 });
+	//towr::g_renderer.SetClearColor(towr::Color{ 30, 30, 30, 255 });
 
 	//create scene / actors
 
@@ -31,24 +32,24 @@ int main() {
 	bool success = towr::json::Load("level.txt", document);
 
 	towr::g_scene.Read(document);
-
+	towr::g_scene.Initialize();
 	{
 
 
-		float angle = 0.0f;
+		//float angle = 0.0f;
 
 		//updating systems
 		bool quit = false;
 		while (!quit) {
-			if (towr::g_inputSystem.GetKeyDown(towr::key_escape)) quit = true;
 
 			//engine updates
 				//game.Update();
 				towr::g_time.Tick();
 				towr::g_inputSystem.Update();
 				towr::g_scene.Update();
+				towr::g_physicsSystem.Update();
 
-			angle += 90.0f * towr::g_time.deltaTime;
+			//angle += 90.0f * towr::g_time.deltaTime;
 
 
 			//render and draw
@@ -59,6 +60,8 @@ int main() {
 				//game.Draw
 
 			towr::g_renderer.EndFrame();
+
+			if (towr::g_inputSystem.GetKeyDown(towr::key_escape)) quit = true;
 		}
 	}
 	towr::g_inputSystem.Shutdown();

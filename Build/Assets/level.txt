@@ -1,43 +1,83 @@
 {
-   "actors":[
-      {
+	"actors": [{
+			"type": "Actor",
+			"name": "background",
+			"tag": "background",
+			"transform": {
+				"position": [0, 0],
+				"scale": [1, 1],
+				"rotation": 0
+			},
+			"components": [{
+				"type": "SpriteComponent",
+				"texture_name": "pngs/background.png"
+			}]
+		},
+		{ 
+         "type":"Actor", 
+         "name":"Music", 
+         "components":[ 
+            { 
+               "type":"AudioComponent", 
+               "sound_name":"mp3/Another Day - Space.mp3", 
+			   "pitch":0.5,
+               "loop":true, 
+               "play_on_start":true 
+            } 
+         ] 
+		}, 
+		{
          "type":"Actor",
-         "name":"player",
-         "tag":"Player",
+         "name":"Floor",
          "transform":{
-            "position":[
-               400,
-               300
-            ],
-            "scale":[
-               2,
-               2
-            ],
+            "position":[400, 430],
+            "scale":[1, 1],
             "rotation":0
          },
          "components":[
             {
-               "type":"PlayerComponent",
-               "speed":200
+               "type":"RBPhysicsComponent",
+               "data.isDynamic":false
             },
             {
-               "type":"ModelComponent",
-               "model_name":"mod/space ship.txt"
-            },
-            {
-                "type":"PhysicsComponent",
-                "m_damping":0.98
-            },
-            {
-                "type":"SpriteAnimComponent",
-                "texture_name":"pngs/ghost-idle.png",
-                "fps":12,
-                "num_columns":7,
-                "num_rows":1,
-                "start_frame":1,
-                "end_frame":7
+               "type":"CollisionComponent",
+               "data.size": [800, 24]
             }
          ]
-      }
-   ]
+        },
+		{
+			"type": "Actor",
+			"name": "player",
+			"tag": "Player",
+			"transform": {
+				"position": [400, 300],
+				"scale": [2, 2],
+				"rotation": 0
+			},
+			"components": [{
+					"type": "PlayerComponent",
+					"speed": 60
+				},
+				{
+					"type": "RBPhysicsComponent",
+					"m_damping": 0.98,
+					"data.gravityScale": 0.5
+				},
+				{
+					"type": "CollisionComponent",
+					"data.size": [48, 48]
+				},
+				{
+					"type": "SpriteAnimComponent",
+					"texture_name": "pngs/ghost-idle.png",
+					"fps": 12,
+					"num_columns": 7,
+					"num_rows": 1,
+					"start_frame": 1,
+					"end_frame": 7
+				}
+			]
+		}
+	]
 }
+

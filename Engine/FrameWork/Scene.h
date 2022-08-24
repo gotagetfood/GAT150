@@ -8,7 +8,7 @@ namespace towr {
 	class Renderer;
 	class Game;
 
-	class Scene : public ISerializable{
+	class Scene :public GameObject, public ISerializable{
 	public:
 		Scene() = default;
 		Scene(Game* game) : m_game(game) {}
@@ -16,6 +16,8 @@ namespace towr {
 
 		void Update();
 		void Draw(Renderer& renderer);
+
+		void Initialize() override;
 
 		// Inherited via ISerializable
 		virtual bool Write(const rapidjson::Value& value) const override;

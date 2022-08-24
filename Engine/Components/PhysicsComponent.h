@@ -21,3 +21,4 @@ namespace towr {
 		float m_damping = 1.0f;
 	};
 }
+

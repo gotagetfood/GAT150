@@ -17,6 +17,7 @@ namespace towr {
 
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer);
+		virtual void Initialize() override;
 
 		// Inherited via ISerializable
 		virtual bool Write(const rapidjson::Value& value) const override;

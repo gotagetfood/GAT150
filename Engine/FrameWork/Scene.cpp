@@ -34,13 +34,23 @@ namespace towr {
 			actor->Draw(renderer);
 		}
 	}
+	void Scene::Initialize(){
+		for (auto& actor : m_actors) {
+
+			actor->Initialize();
+
+		}
+	}
+
 	void Scene::Add(std::unique_ptr<Actor> actor){
 		m_actors.push_back(std::move(actor));
 	}
+
 	bool Scene::Write(const rapidjson::Value& value) const
 	{
 		return true;
 	}
+
 	bool Scene::Read(const rapidjson::Value& value)
 	{
 		if (!value.HasMember("actors") || !value["actors"].IsArray()) {

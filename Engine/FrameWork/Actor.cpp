@@ -13,7 +13,23 @@ namespace towr {
 		for (auto& child : m_children) {
 			child->Update();
 		}
+		
 
+	}
+
+	void Actor::Initialize() {
+
+		for (auto& component : m_components) {
+
+			component->Initialize();
+
+		}
+
+		for (auto& child : m_children) {
+
+			child->Initialize();
+
+		}
 
 	}
 
@@ -51,7 +67,7 @@ namespace towr {
 		READ_DATA(value, name);
 		READ_DATA(value, tag);
 
-		m_transform.Read(value["transform"]);
+		if (value.HasMember("transform")) m_transform.Read(value["transform"]);
 
 		if (value.HasMember("components") && value["components"].IsArray()) {
 			for (auto& componentValue : value["components"].GetArray()) {
