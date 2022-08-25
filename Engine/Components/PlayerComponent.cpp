@@ -2,6 +2,14 @@
 #include "Engine.h"
 #include <iostream>
 
+void towr::PlayerComponent::Initialize() {
+	auto component = m_owner->GetComponent<CollisionComponent>();
+	if (component){
+		component->SetCollisionEnter(std::bind(&PlayerComponent::OnCollisionEnter, this, std::placeholders::_1));
+		component->SetCollisionExit(std::bind(&PlayerComponent::OnCollisionExit, this, std::placeholders::_1));
+	}
+}
+
 void towr::PlayerComponent::Update(){
 	
 	float thrust = 0;
@@ -36,6 +44,19 @@ void towr::PlayerComponent::Update(){
 		}
 	}
 	
+}
+
+void towr::PlayerComponent::OnCollisionEnter(Actor* other)
+{
+	if (other->GetName() == "Coin") {
+		other->SetDestory();
+	}
+	std::cout << "enter\n";
+}
+
+void towr::PlayerComponent::OnCollisionExit(Actor* other)
+{
+	std::cout << "exit\n";
 }
 
 bool towr::PlayerComponent::Write(const rapidjson::Value& value) const{

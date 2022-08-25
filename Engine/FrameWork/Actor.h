@@ -37,6 +37,8 @@ namespace towr {
 		template<typename T>
 		T* GetComponent();
 
+		void SetDestory() { m_destory = true; }
+
 		friend class Scene;
 		friend class Component;
 

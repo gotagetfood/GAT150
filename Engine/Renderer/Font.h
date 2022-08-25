@@ -4,8 +4,9 @@
 #include <string>
 // !! add necessary includes 
 
-// !! forward declare the _TTF_Font struct 
-	struct _TTF_Font {};
+	struct _TTF_Font;
+	struct SDL_Surface;
+
 namespace towr
 {
 	class Font : public Resource
@@ -17,6 +18,8 @@ namespace towr
 
 		//bool Create(const std::string& filename, void* data = nullptr) override;
 		bool Create(std::string filename, ...) override;
+		SDL_Surface* CreateSurface(const std::string& text, const Color& color);
+
 		bool Load(const std::string& filename, int fontSize);
 
 		_TTF_Font* m_ttfFont = nullptr;

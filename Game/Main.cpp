@@ -64,6 +64,11 @@ int main() {
 			if (towr::g_inputSystem.GetKeyDown(towr::key_escape)) quit = true;
 		}
 	}
+	towr::g_scene.RemoveAll();
+
+
+	towr::g_physicsSystem.Shutdown();
+	towr::g_resources.Shutdown();
 	towr::g_inputSystem.Shutdown();
 	towr::g_audioSystem.Shutdown();
 	towr::g_renderer.Shutdown();

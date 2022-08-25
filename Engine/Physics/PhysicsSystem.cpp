@@ -8,6 +8,8 @@ namespace towr
 	void PhysicsSystem::Initialize(){
 		b2Vec2 gravity{ 0, 10 };
 		m_world = std::make_unique<b2World>(gravity);
+		m_contactListener = std::make_unique<ContactListener>();
+		m_world->SetContactListener(m_contactListener.get());
 	}
 
 	void PhysicsSystem::Shutdown(){
@@ -34,10 +36,7 @@ namespace towr
 
 	void PhysicsSystem::DestroyBody(b2Body* body){
 		if (m_world) {
-			m_world->DestroyBody(body); //big boy error to be fixed   
-			//I think my probbems are being caused by an overflow error. but i do not know whats causeing it.
-			//i also think the reason my character dosn't move is caused by this overflow error. it seams that 
-			//it is haveing difficulty reading memory
+			m_world->DestroyBody(body); 
 		}
 	}
 

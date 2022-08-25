@@ -13,6 +13,68 @@
 				"texture_name": "pngs/background.png"
 			}]
 		},
+        { 
+           "type":"Actor", 
+           "name":"Text", 
+           "transform":{ 
+             "position":[ 
+                40, 
+                30 
+             ], 
+             "scale":[ 
+                1, 
+                1 
+              ], 
+              "rotation":0 
+           }, 
+           "components":[ 
+              { 
+                 "type":"TextComponent", 
+                 "text":"Hello World!", 
+                 "font_name":"fonts/arcadeclassic.ttf", 
+                 "font_size":16, 
+                 "registration": [0.0, 0.5], 
+                  "color":[255, 255, 0, 255] 
+               } 
+            ] 
+        }, 
+		{
+           "type":"Actor",
+           "name":"Coin",
+           "tag":"Pickup",
+           "transform":{
+             "position":[
+                600,
+                200
+             ],
+            "scale":[
+                1,
+               1
+            ],
+            "rotation":0
+          },
+         "components":[
+           {
+              "type":"RBPhysicsComponent",
+              "damping":0.4,
+              "data.gravity_scale":1,
+                 "data.constrain_angle":false
+              },
+              {
+                 "type":"CollisionComponent",
+                 "data.restitution": 0.7
+              },
+              {
+                "type":"SpriteAnimComponent",
+                 "texture_name":"Textures/coin.png",
+                "fps":12,
+                "num_columns":8,
+                "num_rows":1,
+               "start_frame":1,
+               "end_frame":8
+             }
+         ]
+        },
 		{ 
          "type":"Actor", 
          "name":"Music", 
@@ -20,7 +82,7 @@
             { 
                "type":"AudioComponent", 
                "sound_name":"mp3/Another Day - Space.mp3", 
-			   "pitch":0.5,
+			   "pitch":0.9,
                "loop":true, 
                "play_on_start":true 
             } 

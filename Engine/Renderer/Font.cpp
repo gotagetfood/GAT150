@@ -1,4 +1,5 @@
 #include "Font.h" 
+#include "Core/Logger.h"
 #include <SDL_ttf.h> 
 
 namespace towr
@@ -11,25 +12,36 @@ namespace towr
 	Font::~Font()
 	{
 		// !! if m_ttfFont not null, close font (TTF_CloseFont) 
-		if (m_ttfFont != nullptr) TTF_CloseFont(m_ttfFont);
+		if (m_ttfFont) { 
+			TTF_CloseFont(m_ttfFont); 
+			m_ttfFont = nullptr;
+		}
 	}
 
 	bool Font::Create(std::string filename, ...)
 	{
-		// va_list - type to hold information about variable arguments 
+		//get arguments
 		va_list args;
-
-		// va_start - enables access to variadic function arguments 
 		va_start(args, filename);
 
-		// va_arg - accesses the next variadic function arguments 
 		int& fontSize = va_arg(args, int);
 
-		// va_end - ends traversal of the variadic function arguments 
 		va_end(args);
 
-		// create texture (returns true/false if successful) 
 		return Load(filename, fontSize);
+	}
+
+	SDL_Surface* Font::CreateSurface(const std::string& text, const Color& color)
+	{
+		SDL_Color c = *((SDL_Color*)(&color));
+		SDL_Surface* surface = TTF_RenderText_Solid(m_ttfFont, text.c_str(), c);
+
+		if (surface == nullptr)
+		{
+			LOG(SDL_GetError());
+		}
+
+		return surface;
 	}
 
 	bool Font::Load(const std::string& filename, int fontSize)
@@ -37,8 +49,11 @@ namespace towr
 		// !! call TTF_OpenFont  
 		// !! use filename.c_str() to get the c-style string 
 		// !! assign the return value of TTF_OpenFont to m_ttfFont 
-		TTF_Font* temp = TTF_OpenFont(filename.c_str(), fontSize);
-		m_ttfFont = temp;
+		m_ttfFont = TTF_OpenFont(filename.c_str(), fontSize);
+		if (m_ttfFont == nullptr) {
+			LOG("SDL Error: %s", SDL_GetError());
+			return false;
+		}
 		return true;
 	}
 }

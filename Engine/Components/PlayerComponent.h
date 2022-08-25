@@ -1,19 +1,27 @@
 #pragma once
 #include "FrameWork/Component.h"
+#include "Physics/ICollision.h"
 
 namespace towr {
-	class PlayerComponent : public Component {
+	class PlayerComponent : public Component, public ICollison {
 	public:
 		PlayerComponent() = default;
 
-		// Inherited via Component
+		void Initialize() override;
+		void Update() override;
+
+		virtual void OnCollisionEnter(Actor* other) override;
+		virtual void OnCollisionExit(Actor* other) override;
+
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 
-		void Update() override;
 
 	public:
 		float speed = 1.0f;
+
+
+		
 
 	};
 }
