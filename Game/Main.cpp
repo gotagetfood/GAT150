@@ -19,6 +19,7 @@ int main() {
 	towr::g_inputSystem.Initialize();
 	towr::g_resources.Initialize();
 	towr::g_physicsSystem.Initialize();
+	towr::g_eventManager.Initialize();
 
 	towr::Engine::Instance().Register();
 
@@ -49,6 +50,7 @@ int main() {
 				towr::g_inputSystem.Update();
 				towr::g_audioSystem.Update();
 				towr::g_physicsSystem.Update();
+				towr::g_eventManager.Update();
 
 			//angle += 90.0f * towr::g_time.deltaTime;
 
@@ -70,6 +72,7 @@ int main() {
 	towr::g_scene.RemoveAll();
 	towr::Factory::Instance().Shutdown();
 
+	towr::g_eventManager.Shutdown();
 	towr::g_physicsSystem.Shutdown();
 	towr::g_resources.Shutdown();
 	towr::g_inputSystem.Shutdown();

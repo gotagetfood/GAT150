@@ -56,7 +56,7 @@
 			},
 			"components": [{
 					"type": "PlayerComponent",
-					"speed": 60
+					"speed": 30
 				},
 				{
 					"type": "RBPhysicsComponent",
@@ -66,7 +66,8 @@
 				},
 				{
 					"type": "CollisionComponent",
-					"data.size": [48, 48]
+					"data.size": [48, 48], 
+					"data.restitution":0.7
 				},
 				{
 					"type": "SpriteAnimComponent",

@@ -34,6 +34,8 @@ namespace towr {
 	}
 
 	void Scene::RemoveAll(){
+		for (auto& actor : m_actors) { actor->SetDestory(); }
+
 		m_actors.clear();
 	}
 

@@ -34,7 +34,7 @@ namespace towr{
 			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is of type 
 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsInt() == false) {
+			if (value[name.c_str()].IsInt() == false) {
 				LOG("error reading json data type int, %s", name.c_str());
 				return false;
 			}
@@ -49,7 +49,7 @@ namespace towr{
 			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is of type 
 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsNumber() == false) {
+			if (value[name.c_str()].IsNumber() == false) {
 				LOG("error reading json data type float, %s", name.c_str());
 				return false;
 			}
@@ -64,7 +64,7 @@ namespace towr{
 			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is of type 
 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsBool() == false) {
+			if (value[name.c_str()].IsBool() == false) {
 				LOG("error reading json data type bool, %s", name.c_str());
 				return false;
 			}
@@ -79,7 +79,7 @@ namespace towr{
 			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is of type 
 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsString() == false) {
+			if (value[name.c_str()].IsString() == false) {
 				LOG("error reading json data type string, %s", name.c_str());
 				return false;
 			}
@@ -93,7 +93,7 @@ namespace towr{
 		bool Get(const rapidjson::Value& value, const std::string& name, Vector2& data) {
 			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is an array with 2 elements 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 2) {
+			if (value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 2) {
 				LOG("error reading json data type Vector2, %s", name.c_str());
 				return false;
 
@@ -120,7 +120,7 @@ namespace towr{
 		bool Get(const rapidjson::Value& value, const std::string& name, Color& data) {
 			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is an array with 2 elements 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4) {
+			if (value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4) {
 				LOG("error reading json data type Color, %s", name.c_str());
 				return false;
 
@@ -148,7 +148,7 @@ namespace towr{
 		bool Get(const rapidjson::Value& value, const std::string& name, Rect& data){
 			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is an array with 2 elements 
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4) {
+			if (value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4) {
 				LOG("error reading json data type Rect, %s", name.c_str());
 				return false;
 

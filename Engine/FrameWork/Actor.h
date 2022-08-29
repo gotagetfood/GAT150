@@ -41,6 +41,7 @@ namespace towr {
 		T* GetComponent();
 
 		void SetDestory() { m_destory = true; }
+		bool IsDestroyed() { return m_destory; }
 
 		void SetActive(bool isactive = true) { active = isactive; }
 		void SetUnActive(bool isactive = false) { active = isactive; }

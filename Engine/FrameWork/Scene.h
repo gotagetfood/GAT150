@@ -32,6 +32,12 @@ namespace towr {
 		template<typename T>
 		T* GetActor();
 
+		template<typename T = Actor>
+		T* GetActorFromName(const std::string& name);
+
+		template<typename T = Actor>
+		std::vector<T*> GetActorsFromTag(const std::string& tag);
+
 		Game* GetGame() { return m_game; }
 		void SetGame(Game* game) { m_game = game; }
 
@@ -52,5 +58,39 @@ namespace towr {
 			if (result) return result;
 		}
 		return nullptr;
+	}
+
+	template<typename T>
+	inline T* Scene::GetActorFromName(const std::string& name)
+	{
+		//  !! for loop (range based) through m_actors 
+		for(auto actor : m_actors)
+		{
+			if (name == actor->GetName())//  !! compare name to actor GetName()) 
+				{
+				return dynamic_cast<T*>(actor.get());//  !! get() actor pointer); 
+				}
+		}
+
+		return nullptr;
+	}
+
+	template<typename T>
+	inline std::vector<T*> Scene::GetActorsFromTag(const std::string& tag)
+	{
+		std::vector<T*> result;
+		
+
+		//  !! for loop (range based) through m_actors 
+		for(auto actor : m_actors){
+
+			if (tag == actor->GetTag()) {//  !! compare name to actor GetName()) 
+				
+				T* tagActor = dynamic_cast<T*>(actor.get());//  !! get() actor pointer); 
+				if (tagActor) result.push_back(tagActor);  //  !! push back tagActor to result vector  
+			}
+		}
+
+		return result;
 	}
 }

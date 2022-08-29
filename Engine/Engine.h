@@ -18,6 +18,7 @@
 #include "FrameWork/Game.h"
 #include "FrameWork/Factory.h"
 #include "FrameWork/Singleton.h"
+#include "FrameWork/EventManager.h"
 
 #include "Components/PlayerComponent.h"
 #include "Components/SpriteComponent.h"
@@ -41,6 +42,7 @@
 #include <vector>
 #include <list>
 #include <algorithm>
+#include <variant>
 
 namespace towr {
 	extern Renderer g_renderer;
@@ -50,6 +52,7 @@ namespace towr {
 	extern AudioSystem g_audioSystem;
 	extern ResourceManager g_resources;
 	extern PhysicsSystem g_physicsSystem;
+	extern EventManager g_eventManager;
 
 	class Engine : public Singleton<Engine> {
 	public:

@@ -26,6 +26,8 @@ void TowrGame::Initialize(){
 
 		towr::g_scene.Add(std::move(actor));
 	}
+
+	towr::g_eventManager.Subscribe("EVENT_ADD_POINTS", std::bind(&TowrGame::OnAddPoints, this, std::placeholders::_1));
 }
 
 void TowrGame::Shutdown(){
@@ -33,9 +35,48 @@ void TowrGame::Shutdown(){
 }
 
 void TowrGame::Update(){
+	switch (m_gameState)
+	{
+	case gameState::titleScreen:
+		if (towr::g_inputSystem.GetKeyState(towr::key_space) == towr::InputSystem::KeyState::Pressed) {
+
+			//towr::g_scene.GetActorFromName("Title")->SetActive(false);
+	
+			m_gameState = gameState::gamestart;
+		}
+		break;
+	case gameState::gamestart:
+		ResetPoints();
+		m_gameState = gameState::game;
+		break;
+	case gameState::game:
+		break;
+	case gameState::gameOver:
+		m_stateTimer -= towr::g_time.deltaTime;
+		if (m_stateTimer <= 0) {
+			m_gameState = gameState::titleScreen;
+		}
+		break;
+	default:
+		break;
+	}
+
 	towr::g_scene.Update();
 }
 
 void TowrGame::Draw(towr::Renderer& renderer){
 	towr::g_scene.Draw(renderer);
+}
+
+void TowrGame::OnAddPoints(const towr::Event& event){
+	AddPoints(std::get<int>(event.data));
+
+	std::cout << event.name << std::endl;
+	std::cout << GetScore() << std::endl;
+}
+
+void TowrGame::OnPlayerDead(const towr::Event& event){
+	m_gameState = gameState::gameOver;
+	m_stateTimer = 10;
+
 }

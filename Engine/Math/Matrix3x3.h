@@ -15,10 +15,15 @@ namespace towr {
 		Vector2 operator * (const Vector2& v) const; //v3 = mx33 * v3
 		Matrix3x3 operator * (const Matrix3x3& mx) const; //mx33 = mx33 * mx33
 
+		Vector2 GetTranslation() const;
+		float GetRotation() const;
+		Vector2 GetScale() const;
+
 		static Matrix3x3 CreateScale(const Vector2& scale);
 		static Matrix3x3 CreateScale(float scale);
 		static Matrix3x3 CreateRotation(float radians);
 		static Matrix3x3 CreateTranslation(const Vector2& translate);
+
 
 		static const Matrix3x3 identity;
 		static const Matrix3x3 zero;

@@ -19,6 +19,7 @@ namespace towr {
 
 		int GetScore() { return m_score; }
  		void AddPoints(int points) { m_score += points; }
+		void ResetPoints() { m_score = 0; }
 
 	protected:
 		//std::unique_ptr<Scene> m_scene;

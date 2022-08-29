@@ -49,6 +49,11 @@ void towr::PlayerComponent::Update(){
 void towr::PlayerComponent::OnCollisionEnter(Actor* other)
 {
 	if (other->GetName() == "Coin") {
+		Event event;
+		event.name = "EVENT_ADD_POINTS";
+		event.data = 100;
+
+		g_eventManager.Notify(event);
 		other->SetDestory();
 	}
 	std::cout << "enter\n";

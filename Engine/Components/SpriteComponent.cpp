@@ -8,8 +8,8 @@ namespace towr {
 
 	}
 
-	void SpriteComponent::Draw(Renderer& renderer) {
-		renderer.Draw(m_texture, source, m_owner->m_transform);
+	void SpriteComponent::Draw(Renderer& renderer){
+		renderer.Draw(m_texture, GetSource(), m_owner->m_transform);
 	}
 
 	bool SpriteComponent::Write(const rapidjson::Value& value) const {
@@ -31,4 +31,5 @@ namespace towr {
 
 		return true;
 	}
+
 }
