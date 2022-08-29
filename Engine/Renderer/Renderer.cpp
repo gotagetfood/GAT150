@@ -61,8 +61,8 @@ namespace towr {
 
 		SDL_Rect dest;
 		// !! make sure to cast to int to prevent compiler warnings 
-		dest.x = (int)(position.x);
-		dest.y = (int)(position.y);
+		dest.x = (int)(tposition.x);
+		dest.y = (int)(tposition.y);
 		dest.w = (int)(size.x);
 		dest.h = (int)(size.y);
 
@@ -99,8 +99,8 @@ namespace towr {
 
 		SDL_Rect dest;
 		// !! make sure to cast to int to prevent compiler warnings 
-		dest.x = (int)(transform.position.x);
-		dest.y = (int)(transform.position.y);
+		dest.x = (int)(tposition.x);
+		dest.y = (int)(tposition.y);
 		dest.w = (int)(size.x);
 		dest.h = (int)(size.y);
 

@@ -10,10 +10,13 @@ namespace towr {
 	class Actor : public GameObject, public ISerializable {
 	public:
 		Actor() = default;
+		Actor(const Actor& other);
 		Actor(const Transform& transform) : m_transform{ transform } {}
 		//Actor(const Model& model,const Transform& transform) : 
 			//GameObject{ transform },
 			//m_model{ model } {}
+
+		CLASS_DECLARATION(Actor)
 
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer);
@@ -39,6 +42,10 @@ namespace towr {
 
 		void SetDestory() { m_destory = true; }
 
+		void SetActive(bool isactive = true) { active = isactive; }
+		void SetUnActive(bool isactive = false) { active = isactive; }
+		bool IsActive() { return active; }
+
 		friend class Scene;
 		friend class Component;
 
@@ -46,11 +53,9 @@ namespace towr {
 	protected:
 		std::string name;
 		std::string tag;
+		bool active = true;
 
 		bool m_destory = false;
-		//physics
-		Vector2 m_velocity;
-		float m_damping = 1.0f;
 		
 		Actor* m_parent = nullptr;
 		std::vector<std::unique_ptr<Component>> m_components;

@@ -31,6 +31,7 @@ namespace towr{
 		}
 
 		bool Get(const rapidjson::Value& value, const std::string& name, int& data) {
+			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is of type 
 
 			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsInt() == false) {
@@ -45,6 +46,7 @@ namespace towr{
 		}
 
 		bool Get(const rapidjson::Value& value, const std::string& name, float& data) {
+			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is of type 
 
 			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsNumber() == false) {
@@ -59,6 +61,7 @@ namespace towr{
 		}
 
 		bool Get(const rapidjson::Value& value, const std::string& name, bool& data) {
+			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is of type 
 
 			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsBool() == false) {
@@ -73,6 +76,7 @@ namespace towr{
 		}
 
 		bool Get(const rapidjson::Value& value, const std::string& name, std::string& data) {
+			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is of type 
 
 			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsString() == false) {
@@ -87,6 +91,7 @@ namespace towr{
 		}
 
 		bool Get(const rapidjson::Value& value, const std::string& name, Vector2& data) {
+			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is an array with 2 elements 
 			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 2) {
 				LOG("error reading json data type Vector2, %s", name.c_str());
@@ -113,6 +118,7 @@ namespace towr{
 		}
 
 		bool Get(const rapidjson::Value& value, const std::string& name, Color& data) {
+			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is an array with 2 elements 
 			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4) {
 				LOG("error reading json data type Color, %s", name.c_str());
@@ -140,6 +146,7 @@ namespace towr{
 
 		//[0,0,32,32]
 		bool Get(const rapidjson::Value& value, const std::string& name, Rect& data){
+			if (!value.HasMember(name.c_str())) return false;
 			// check if 'name' member exists and is an array with 2 elements 
 			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4) {
 				LOG("error reading json data type Rect, %s", name.c_str());
@@ -155,6 +162,60 @@ namespace towr{
 			data.w = array[2].GetInt();
 			data.h = array[3].GetInt();
 
+
+			return true;
+		}
+
+		bool Get(const rapidjson::Value& value, const std::string& name, std::vector<std::string>& data){
+
+			// check if 'name' member exists and is an array with 2 elements 
+			if (!value.HasMember(name.c_str())) return false;
+			if (!value[name.c_str()].IsArray()) {
+				LOG("error reading json data type string vector, %s", name.c_str());
+				return false;
+			}
+
+			// create json array object 
+			auto& array = value[name.c_str()];
+			// get array values 
+			for (rapidjson::SizeType i = 0; i < array.Size(); i++)
+			{
+				if (!array[i].IsString())
+				{
+
+					LOG("error reading json data (not an string) %s", name.c_str());
+					return false;
+				}
+
+				data.push_back(array[i].GetString());
+			}
+
+			return true;
+		}
+
+		bool Get(const rapidjson::Value& value, const std::string& name, std::vector<int>& data) {
+
+			// check if 'name' member exists and is an array with 2 elements 
+			if (!value.HasMember(name.c_str())) return false;
+			if (!value[name.c_str()].IsArray()) {
+				LOG("error reading json data type string vector, %s", name.c_str());
+				return false;
+			}
+
+			// create json array object 
+			auto& array = value[name.c_str()];
+			// get array values 
+			for (rapidjson::SizeType i = 0; i < array.Size(); i++)
+			{
+				if (!array[i].IsInt())
+				{
+
+					LOG("error reading json data (not an string) %s", name.c_str());
+					return false;
+				}
+
+				data.push_back(array[i].GetInt());
+			}
 
 			return true;
 		}

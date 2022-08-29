@@ -4,7 +4,7 @@
 			"name": "background",
 			"tag": "background",
 			"transform": {
-				"position": [0, 0],
+				"position": [400, 300],
 				"scale": [1, 1],
 				"rotation": 0
 			},
@@ -50,7 +50,7 @@
 			"name": "player",
 			"tag": "player",
 			"transform": {
-				"position": [0, 0],
+				"position": [300, 80],
 				"scale": [1, 1],
 				"rotation": 0
 			},
@@ -61,7 +61,8 @@
 				{
 					"type": "RBPhysicsComponent",
 					"m_damping": 0.98,
-					"data.gravityScale": 0.5
+					"data.gravityScale": 0.5,
+					"data.constrainAngle": true
 				},
 				{
 					"type": "CollisionComponent",

@@ -10,6 +10,8 @@ namespace towr {
 		void Initialize() override;
 		void Update() override;
 
+		CLASS_DECLARATION(PlayerComponent)
+
 		virtual void OnCollisionEnter(Actor* other) override;
 		virtual void OnCollisionExit(Actor* other) override;
 

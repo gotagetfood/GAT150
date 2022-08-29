@@ -4,6 +4,7 @@
 #include "Core/Memory.h"
 #include "Core/File.h"
 #include "Core/Time.h"
+#include "Core/Logger.h"
 
 #include "Math/MathUtils.h"
 #include "Math/Random.h"
@@ -26,6 +27,8 @@
 #include "Components/CollisionComponent.h"
 #include "Components/ModelComponent.h"
 #include "Components/SpriteAnimComponent.h"
+#include "Components/TextComponent.h"
+#include "Components/TilemapComponent.h"
 
 #include "Renderer/Renderer.h"
 #include "Renderer/Model.h"	

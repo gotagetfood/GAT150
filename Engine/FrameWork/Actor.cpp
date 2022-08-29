@@ -3,37 +3,41 @@
 #include "Components/RenderComponent.h"
 
 namespace towr {
+	Actor::Actor(const Actor& other){
+		name = other.name;
+		tag = other.tag;
+		m_transform = other.m_transform;
+		
+		for (auto& component : other.m_components) {
+			auto clone = std::unique_ptr<Component>((Component*)component->Clone().release());
+			AddComponent(std::move(clone));
+		}
+	}
+
 	void Actor::Update(){
+
+		if (!active) return;
+
+		for (auto& component : m_components) {component->Update();}
+		for (auto& child : m_children) {child->Update();}
+		
 		if (m_parent) m_transform.Update(m_parent->m_transform.matrix);
 		else m_transform.Update();
-
-		for (auto& component : m_components) {
-			component->Update();
-		}
-		for (auto& child : m_children) {
-			child->Update();
-		}
-		
 
 	}
 
 	void Actor::Initialize() {
 
-		for (auto& component : m_components) {
+		for (auto& component : m_components) {component->Initialize();}
 
-			component->Initialize();
-
-		}
-
-		for (auto& child : m_children) {
-
-			child->Initialize();
-
-		}
+		for (auto& child : m_children) {child->Initialize();}
 
 	}
 
 	void towr::Actor::Draw(Renderer& renderer){
+
+		if (!active) return;
+
 		for (auto& component : m_components) {
 			auto renderComponent = dynamic_cast<RenderComponent*>(component.get());
 			if (renderComponent) {
@@ -66,6 +70,7 @@ namespace towr {
 	bool Actor::Read(const rapidjson::Value& value){
 		READ_DATA(value, name);
 		READ_DATA(value, tag);
+		READ_DATA(value, active);
 
 		if (value.HasMember("transform")) m_transform.Read(value["transform"]);
 

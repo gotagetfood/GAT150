@@ -15,6 +15,8 @@ namespace towr
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer) override;
 
+		CLASS_DECLARATION(TextComponent)
+
 		void SetText(const std::string& text);
 
 		virtual bool Write(const rapidjson::Value& value) const override;

@@ -21,7 +21,7 @@ void towr::PlayerComponent::Update(){
 	Vector2 direction = Vector2::zero;
 	if (towr::g_inputSystem.GetKeyState(towr::key_left) == InputSystem::KeyState::Held) {
 		direction = Vector2::left;
-		//m_owner->m_transform.rotation += -180 * g_time.deltaTime;
+		//gm_owner->m_transform.rotation += -180 * g_time.deltaTime;
 	}
 	if (towr::g_inputSystem.GetKeyState(towr::key_right) == InputSystem::KeyState::Held) {
 		direction = Vector2::right;

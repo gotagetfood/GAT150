@@ -9,8 +9,11 @@ namespace towr {
 		RBPhysicsComponent() = default;          
 		~RBPhysicsComponent();          
 		void Initialize() override;          
-		void Update() override;          
-		virtual void ApplyForce(const Vector2& force);          
+		void Update() override;   
+
+		CLASS_DECLARATION(RBPhysicsComponent)
+
+		virtual void ApplyForce(const Vector2& force) override;          
 		virtual bool Write(const rapidjson::Value& value) const override;          
 		virtual bool Read(const rapidjson::Value& value) override;   
 

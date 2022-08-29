@@ -15,6 +15,8 @@ namespace towr {
 		virtual void Initialize() override;
 		virtual void Update() override;
 
+		CLASS_DECLARATION(CollisionComponent)
+
 		void OnCollisionEnter(Actor* other) override;
 		void OnCollisionExit(Actor* other) override;
 

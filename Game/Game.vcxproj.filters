@@ -18,13 +18,24 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TowrGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Build\Assets\json.txt">
+    <Text Include="..\Build\Assets\txt\prefabs.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="..\Build\Assets\level.txt">
+    <Text Include="..\Build\Assets\txt\Tilemap.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="..\Build\Assets\txt\level.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TowrGame.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
