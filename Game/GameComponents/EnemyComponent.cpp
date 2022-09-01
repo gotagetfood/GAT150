@@ -17,6 +17,26 @@ void EnemyComponent::Update()
 
         auto component = m_owner->GetComponent<towr::PhysicsComponent>();
         if (component) component->ApplyForce(force);
+
+        if (towr::random(1, 400) == 1 && m_owner->GetName() == "nightmare") {
+            auto component = m_owner->GetComponent<towr::PhysicsComponent>();
+            if (component) {
+                component->ApplyForce(towr::Vector2::up * 2000);
+            }
+        }
+    }
+
+    towr::Vector2 direction = towr::Vector2::zero;
+    towr::Vector2 velocity;
+    auto component = m_owner->GetComponent<towr::PhysicsComponent>();
+    if (component) {
+        component->ApplyForce(direction * speed);
+        velocity = component->m_velocity;
+    }
+
+    auto renderComponent = m_owner->GetComponent<towr::RenderComponent>();
+    if (renderComponent) {
+        if (velocity.x != 0) renderComponent->SetFlipHorizontal(velocity.x < 0);
     }
 }
 

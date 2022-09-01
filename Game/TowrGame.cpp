@@ -23,20 +23,20 @@ void TowrGame::Initialize(){
 
 	for (int i = 0; i < 10; i++) {
 		auto actor = towr::Factory::Instance().Create<towr::Actor>("Coin");
-		actor->m_transform.position = { towr::randomf(0,600), 100.0f };
+		actor->m_transform.position = { towr::randomf(0,2000), towr::randomf(100,1200) };
 		actor->Initialize();
 
 		towr::g_scene.Add(std::move(actor));
 
 		auto actor2 = towr::Factory::Instance().Create<towr::Actor>("bat");
-		actor2->m_transform.position = { towr::randomf(0,600), 100.0f };
+		actor2->m_transform.position = { towr::randomf(0,2000), towr::randomf(100,1200) };
 		actor2->Initialize();
 
 		towr::g_scene.Add(std::move(actor2));
 	}
 
 	auto actor2 = towr::Factory::Instance().Create<towr::Actor>("nightmare");
-	actor2->m_transform.position = { towr::randomf(0,600), 300.0f };
+	actor2->m_transform.position = { towr::randomf(0,1000), 800.0f };
 	actor2->Initialize();
 
 	towr::g_scene.Add(std::move(actor2));
@@ -86,6 +86,12 @@ void TowrGame::Draw(towr::Renderer& renderer){
 
 void TowrGame::OnAddPoints(const towr::Event& event){
 	AddPoints(std::get<int>(event.data));
+	auto actor = towr::g_scene.GetActorFromName("Score");
+	if (actor)
+	{
+		auto component = actor->GetComponent<towr::TextComponent>();
+		component->SetText("Points: " + std::to_string(m_score));
+	}
 
 	std::cout << event.name << std::endl;
 	std::cout << GetScore() << std::endl;

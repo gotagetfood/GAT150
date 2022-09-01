@@ -1,5 +1,6 @@
 #pragma once
 #include "Components/CharacterComponent.h"
+#include "FrameWork/Component.h"
 
 class EnemyComponent : public towr::CharacterComponent
 {

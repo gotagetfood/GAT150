@@ -4,18 +4,18 @@
 			"name": "background",
 			"tag": "background",
 			"transform": {
-				"position": [400, 300],
-				"scale": [1, 1],
+				"position": [1050, 990],
+				"scale": [1.6, 2.2],
 				"rotation": 0
 			},
 			"components": [{
 				"type": "SpriteComponent",
-				"texture_name": "png/background.png"
+				"texture_name": "png/grave yard.png"
 			}]
 		},
         { 
            "type":"Actor", 
-           "name":"Text", 
+           "name":"Score", 
            "transform":{ 
              "position":[30, 100], 
              "scale":[1, 1], 
@@ -24,7 +24,7 @@
            "components":[ 
               { 
                  "type":"TextComponent", 
-                 "text":"Helo World!", 
+                 "text":"Points: 000", 
                  "font_name":"tff/metalord.ttf", 
                  "font_size":16, 
                  "registration": [0.0, 0.5], 
@@ -75,7 +75,7 @@
 				{
 					"type": "RBPhysicsComponent",
 					"m_damping": 0.98,
-					"data.gravityScale": 0.5,
+					"data.gravityScale": 1.5,
 					"data.constrainAngle": true,
 					"isDynamic": false
 				},

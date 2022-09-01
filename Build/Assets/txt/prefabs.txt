@@ -47,15 +47,15 @@
          "components":[
               {
                     "type":"EnemyComponent",
-                    "speed":4,
+                    "speed":100,
                     "health":10,
                     "damage":16
 
               },
               {
                     "type":"RBPhysicsComponent",
-                    "damping":0.7,
-                    "data.gravityScale":1,
+                    "damping":0.4,
+                    "data.gravityScale":3,
                     "data.constrainAngle":true
               },
               {
