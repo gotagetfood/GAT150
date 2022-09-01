@@ -52,7 +52,7 @@
 					"texture_name":"png/tileset.png",
 					"source":[
 						96,
-						416,
+						384,
 						32,
 						32
 					]

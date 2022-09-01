@@ -11,6 +11,9 @@ namespace towr {
 		SDL_Init(SDL_INIT_VIDEO);
 		TTF_Init();
 		IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
+
+		m_view = Matrix3x3::identity;
+		m_viewport = Matrix3x3::identity;
 	}
 	void Renderer::Shutdown(){
 		SDL_DestroyRenderer(m_renderer);
@@ -50,7 +53,7 @@ namespace towr {
 		SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
 		SDL_RenderDrawPointF(m_renderer, v.x, v.y);
 	}
-
+	
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Vector2& position, float rotation, const Vector2& scale, const Vector2& registration){
 		Vector2 size = texture->GetSize();
 		size = size * scale;// - (size * 0.5f);
@@ -70,6 +73,7 @@ namespace towr {
 
 		SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, rotation, &center, SDL_FLIP_NONE);
 	}
+
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration){
 		Vector2 size = texture->GetSize();
 		size = size * transform.scale;// - (size * 0.5f);
@@ -89,16 +93,17 @@ namespace towr {
 
 		SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, transform.rotation, &center, SDL_FLIP_NONE);
 	}
-	void Renderer::Draw(std::shared_ptr<Texture> texture, const Rect& source, const Transform& transform, const Vector2& registration){
-		Vector2 size = Vector2{source.w, source.h};
-		size = size * transform.scale;// - (size * 0.5f);
+	
+	void Renderer::Draw(std::shared_ptr<Texture> texture, const Rect& source, const Transform& transform, const Vector2& registration, bool flipH){
+		Matrix3x3 mx = m_viewport * m_view * transform.matrix;
 
+		Vector2 size = Vector2{ source.w, source.h };
+		size = size * mx.GetScale();
 
 		Vector2 origin = size * registration;
-		Vector2 tposition = transform.position - origin;
+		Vector2 tposition = mx.GetTranslation() - origin;
 
 		SDL_Rect dest;
-		// !! make sure to cast to int to prevent compiler warnings 
 		dest.x = (int)(tposition.x);
 		dest.y = (int)(tposition.y);
 		dest.w = (int)(size.x);
@@ -112,7 +117,9 @@ namespace towr {
 
 		SDL_Point center{ (int)origin.x, (int)origin.y };
 
-		SDL_RenderCopyEx(m_renderer, texture->m_texture, &src, &dest, transform.rotation, &center, SDL_FLIP_NONE);
+
+		SDL_RendererFlip flip = (flipH) ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+		SDL_RenderCopyEx(m_renderer, texture -> m_texture, &src, &dest, math::RadToDeg(mx.GetRotation()), &center, flip);
 
 	}
 }

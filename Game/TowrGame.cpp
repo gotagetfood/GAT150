@@ -1,7 +1,9 @@
 #include "TowrGame.h"
+#include "GameComponents/EnemyComponent.h"
 #include "Engine.h"
 
 void TowrGame::Initialize(){
+	REGISTER_CLASS(EnemyComponent);
 	//towr::g_scene = std::make_unique<towr::Scene>();
 
 	rapidjson::Document document;
@@ -25,7 +27,19 @@ void TowrGame::Initialize(){
 		actor->Initialize();
 
 		towr::g_scene.Add(std::move(actor));
+
+		auto actor2 = towr::Factory::Instance().Create<towr::Actor>("bat");
+		actor2->m_transform.position = { towr::randomf(0,600), 100.0f };
+		actor2->Initialize();
+
+		towr::g_scene.Add(std::move(actor2));
 	}
+
+	auto actor2 = towr::Factory::Instance().Create<towr::Actor>("nightmare");
+	actor2->m_transform.position = { towr::randomf(0,600), 300.0f };
+	actor2->Initialize();
+
+	towr::g_scene.Add(std::move(actor2));
 
 	towr::g_eventManager.Subscribe("EVENT_ADD_POINTS", std::bind(&TowrGame::OnAddPoints, this, std::placeholders::_1));
 }
@@ -43,10 +57,12 @@ void TowrGame::Update(){
 			//towr::g_scene.GetActorFromName("Title")->SetActive(false);
 	
 			m_gameState = gameState::gamestart;
+
 		}
 		break;
 	case gameState::gamestart:
 		ResetPoints();
+
 		m_gameState = gameState::game;
 		break;
 	case gameState::game:

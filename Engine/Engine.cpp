@@ -13,6 +13,7 @@ namespace towr {
 	void Engine::Register(){
 		REGISTER_CLASS(Actor);
 		REGISTER_CLASS(AudioComponent);
+		REGISTER_CLASS(CameraComponent);
 		REGISTER_CLASS(ModelComponent);
 		REGISTER_CLASS(PhysicsComponent);
 		REGISTER_CLASS(RBPhysicsComponent);

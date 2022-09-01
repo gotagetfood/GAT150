@@ -6,6 +6,7 @@ namespace towr {
 	Actor::Actor(const Actor& other){
 		name = other.name;
 		tag = other.tag;
+		lifespan = other.lifespan;
 		m_transform = other.m_transform;
 		
 		for (auto& component : other.m_components) {
@@ -17,6 +18,14 @@ namespace towr {
 	void Actor::Update(){
 
 		if (!active) return;
+
+		// update lifespan if lifespan is not 0 
+		if (lifespan != 0){
+			lifespan -= g_time.deltaTime;
+			if (lifespan <= 0){
+				SetDestroy();
+			}
+		}
 
 		for (auto& component : m_components) {component->Update();}
 		for (auto& child : m_children) {child->Update();}
@@ -71,6 +80,7 @@ namespace towr {
 		READ_DATA(value, name);
 		READ_DATA(value, tag);
 		READ_DATA(value, active);
+		READ_DATA(value, lifespan);
 
 		if (value.HasMember("transform")) m_transform.Read(value["transform"]);
 

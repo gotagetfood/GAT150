@@ -7,7 +7,7 @@
 namespace towr {
 	class Actor;
 
-	class CollisionComponent : public Component, public ICollison {
+	class CollisionComponent : public Component, public ICollision {
 	public:
 		using functionPtr = std::function<void(Actor*)>;
 
@@ -28,8 +28,11 @@ namespace towr {
 
 	private:
 		PhysicsSystem::CollisionData data;
+		Vector2 scale_offset = { 1,1 };
+
 		functionPtr m_enterFunction;
 		functionPtr m_exitFunction;
+
 
 	};
 }

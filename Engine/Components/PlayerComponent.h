@@ -1,9 +1,9 @@
 #pragma once
 #include "FrameWork/Component.h"
-#include "Physics/ICollision.h"
+#include "CharacterComponent.h"
 
 namespace towr {
-	class PlayerComponent : public Component, public ICollison {
+	class PlayerComponent : public CharacterComponent {
 	public:
 		PlayerComponent() = default;
 
@@ -12,6 +12,7 @@ namespace towr {
 
 		CLASS_DECLARATION(PlayerComponent)
 
+		virtual void OnNotify(const Event& event) override;
 		virtual void OnCollisionEnter(Actor* other) override;
 		virtual void OnCollisionExit(Actor* other) override;
 
@@ -20,10 +21,8 @@ namespace towr {
 
 
 	public:
-		float speed = 1.0f;
-
-
-		
+		float jump = 3000;
+	
 
 	};
 }

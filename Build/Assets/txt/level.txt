@@ -32,6 +32,20 @@
                } 
             ] 
         }, 
+		{
+			"type":"Actor", 
+			"name":"Camera", 
+			"transform":{ 
+				"position":[ 400, 300], 
+				"scale":[1, 1], 
+				"rotation":0 
+			}, 
+			"components":[{ 
+				"type":"CameraComponent", 
+				"viewport_size": [800, 600] 
+			} 
+			] 
+		},
 		{ 
          "type":"Actor", 
          "name":"Music", 
@@ -50,7 +64,7 @@
 			"name": "player",
 			"tag": "player",
 			"transform": {
-				"position": [300, 80],
+				"position": [450, 300],
 				"scale": [1, 1],
 				"rotation": 0
 			},
@@ -62,16 +76,16 @@
 					"type": "RBPhysicsComponent",
 					"m_damping": 0.98,
 					"data.gravityScale": 0.5,
-					"data.constrainAngle": true
+					"data.constrainAngle": true,
+					"isDynamic": false
 				},
 				{
 					"type": "CollisionComponent",
-					"data.size": [48, 48], 
 					"data.restitution":0.7
 				},
 				{
 					"type": "SpriteAnimComponent",
-					"texture_name": "png/ghost-idle.png",
+					"texture_name": "png/ghost2.png",
 					"fps": 12,
 					"num_columns": 7,
 					"num_rows": 1,

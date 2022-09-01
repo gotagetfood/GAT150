@@ -18,10 +18,6 @@ namespace towr {
 
 		CLASS_DECLARATION(Actor)
 
-		virtual void Update() override;
-		virtual void Draw(Renderer& renderer);
-		virtual void Initialize() override;
-
 		// Inherited via ISerializable
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
@@ -40,8 +36,12 @@ namespace towr {
 		template<typename T>
 		T* GetComponent();
 
-		void SetDestory() { m_destory = true; }
+		void SetDestroy() { m_destory = true; }
 		bool IsDestroyed() { return m_destory; }
+
+		virtual void Update() override;
+		virtual void Draw(Renderer& renderer);
+		virtual void Initialize() override;
 
 		void SetActive(bool isactive = true) { active = isactive; }
 		void SetUnActive(bool isactive = false) { active = isactive; }
@@ -55,6 +55,7 @@ namespace towr {
 		std::string name;
 		std::string tag;
 		bool active = true;
+		float lifespan = 0;
 
 		bool m_destory = false;
 		

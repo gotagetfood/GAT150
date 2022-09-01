@@ -9,10 +9,6 @@
 #include "Math/MathUtils.h"
 #include "Math/Random.h"
 
-#include "Input/InputSystem.h"
-#include "Audio/AudioSystem.h"
-#include "Physics/PhysicsSystem.h"
-#include "Resource/ResourceManager.h"
 
 #include "FrameWork/Scene.h"
 #include "FrameWork/Game.h"
@@ -20,7 +16,9 @@
 #include "FrameWork/Singleton.h"
 #include "FrameWork/EventManager.h"
 
+#include "Components/CharacterComponent.h"
 #include "Components/PlayerComponent.h"
+#include "Components/CameraComponent.h"
 #include "Components/SpriteComponent.h"
 #include "Components/AudioComponent.h"
 #include "Components/PhysicsComponent.h"
@@ -30,6 +28,11 @@
 #include "Components/SpriteAnimComponent.h"
 #include "Components/TextComponent.h"
 #include "Components/TilemapComponent.h"
+
+#include "Input/InputSystem.h"
+#include "Audio/AudioSystem.h"
+#include "Physics/PhysicsSystem.h"
+#include "Resource/ResourceManager.h"
 
 #include "Renderer/Renderer.h"
 #include "Renderer/Model.h"	
